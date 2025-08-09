@@ -1,7 +1,7 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-import Login from './pages/Login'
+import Login from './pages/LoginPage'
 import Home from './pages/Home'
 
 const isAuthenticated = () =>{

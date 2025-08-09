@@ -1,0 +1,7 @@
+.pageBackground {
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
