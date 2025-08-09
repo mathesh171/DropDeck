@@ -16,7 +16,7 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.get('http://localhost/auth-backend/login.php', {
+      const response = await axios.get('http://localhost:8080/auth-backend/login.php', {
         params: { email, password }
       });
       const data = response.data;
@@ -38,7 +38,7 @@ const LoginPage = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost/auth-backend/signup.php', {
+      const response = await axios.post('http://localhost:8080/auth-backend/signup.php', {
         username, email, password
       });
       const data = response.data;
