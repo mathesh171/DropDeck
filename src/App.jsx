@@ -1,46 +1,52 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import './App.css';
-
-import Login from './pages/LoginPage';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
 import Home from './pages/Home';
 
-const isAuthenticated = () =>{
-  return localStorage.getItem("isLoggedIn") === "true";
-}
+const isAuthenticated = () => {
+  return localStorage.getItem('isLoggedIn') === 'true';
+};
 
 const PrivateRoute = ({ children }) => {
-  const navigate = useNavigate();
+  return isAuthenticated() ? children : <Navigate to="/" replace />;
+};
 
-  useEffect(() => {
-    if (!isAuthenticated()) {
-      navigate('/');
-    }
-  }, []);
-
-  return isAuthenticated() ? children : null;
+const PublicRoute = ({ children }) => {
+  return !isAuthenticated() ? children : <Navigate to="/home" replace />;
 };
 
 const App = () => {
-  const navigate = useNavigate();
-  const handleClick = () =>{
-      navigate('/home');
-  }
   return (
     <Routes>
-      <Route path='/' element={<Login/>}></Route>
-      <Route path={"/home"} element={<PrivateRoute> <Home/> </PrivateRoute>}/>
+      <Route
+        path="/"
+        element={
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        }
+      />
 
+      <Route
+        path="/home"
+        element={
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+        }
+      />
 
-      <Route path="*" element={
-        <div style={{padding: '20px', textAlign: 'center'}}>
-              <h2>404 - Page Not Found</h2>
-              <p>The page you're looking for doesn't exist.</p>
-              <button onClick={handleClick}>Return to Home</button>
-        </div>} 
+      <Route
+        path="*"
+        element={
+          isAuthenticated() ? (
+            <Navigate to="/home" replace />
+          ) : (
+            <Navigate to="/" replace />
+          )
+        }
       />
     </Routes>
   );
-}
+};
 
 export default App;
