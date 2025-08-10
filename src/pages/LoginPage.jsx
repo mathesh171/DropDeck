@@ -4,6 +4,7 @@ import { toast, Bounce } from 'react-toastify';
 import ToastContainerComponent from '../components/Tostify/Tostify';
 import Login from '../components/Login/Login';
 import SignUp from '../components/SignUp/SignUp';
+import Logo from '../components/Logo/Logo';
 import styles from '../pageStyles/LoginPage.module.css'; 
 import axios from 'axios';
 
@@ -93,6 +94,7 @@ const LoginPage = () => {
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.leftPanel}>
+        <Logo/>
         <div className={styles.icon}></div>
         <h1>Temporary Chat & File Sharing</h1>
         <p>Create secure, time-limited chat groups for temporary collaboration.</p>
