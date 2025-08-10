@@ -94,7 +94,9 @@ const LoginPage = () => {
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.leftPanel}>
-        <Logo/>
+        <div className={styles.logoLeft}>
+          <Logo />
+        </div>
         <div className={styles.icon}></div>
         <h1>Temporary Chat & File Sharing</h1>
         <p>Create secure, time-limited chat groups for temporary collaboration.</p>
@@ -105,6 +107,9 @@ const LoginPage = () => {
         </ul>
       </div>
       <div className={styles.rightPanel}>
+        <div className={styles.logoRight}>
+          <Logo />
+        </div>
         {isLoginMode ? (
           <Login
             email={email}

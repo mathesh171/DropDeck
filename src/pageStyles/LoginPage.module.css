@@ -1,11 +1,11 @@
 .pageWrapper {
   display: flex;
   min-height: 100vh;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .leftPanel {
-  flex: .9;
+  flex: 0.9;
   background-color: #0a57ff;
   color: #fff;
   display: flex;
@@ -13,6 +13,7 @@
   justify-content: center;
   padding: 2rem;
   min-width: 300px;
+  transition: all 0.3s ease;
 }
 
 .leftPanel h1 {
@@ -25,30 +26,64 @@
 
 .leftPanel ul {
   list-style: none;
-  padding-left: 5rem;  
-  
+  padding-left: 5rem;
 }
 
 .leftPanel li {
-  margin-bottom: 0.8rem; 
+  margin-bottom: 0.8rem;
 }
 
 .rightPanel {
   flex: 1;
   display: flex;
+  flex-direction: column;  
   justify-content: center;
   align-items: center;
   min-width: 300px;
   background-color: #f7f8fa;
+  padding: 2rem;
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
+.logoLeft {
+  display: flex;
+}
+
+.logoRight {
+  display: none;
+}
+
+
+@media (max-width: 900px) {
   .pageWrapper {
-    flex-direction: column;
+    justify-content: center;
   }
-  .leftPanel, .rightPanel {
+
+  .leftPanel {
+    display: none;
+  }
+  
+  .rightPanel {
     flex: unset;
     width: 100%;
-    min-height: auto;
+    min-width: unset;
+    padding: 2rem 1.5rem;
+  }
+  .logoLeft {
+    display: none;
+  }
+  
+  .logoRight {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  .rightPanel > :first-child {
+    margin-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
+
