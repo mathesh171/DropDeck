@@ -14,47 +14,37 @@ const SignUp = ({
   error,
   onSwitchToLogin
 }) => (
-  <div className={styles.signupContainer}>
-    <h2 className={styles.title}>DropDeck Sign Up</h2>
-    <form className={styles.form} onSubmit={e => { e.preventDefault(); onSubmit(); }}>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={e => onUsernameChange(e.target.value)}
-        className={styles.input}
-        required
-      />
+  <div className={styles.formCard}>
+    <h2>Create account</h2>
+    <p>Sign up to start creating temporary chat groups</p>
+    <form onSubmit={e => { e.preventDefault(); onSubmit(); }}>
       <input
         type="email"
-        placeholder="Email"
+        placeholder="Enter your email"
         value={email}
         onChange={e => onEmailChange(e.target.value)}
-        className={styles.input}
         required
       />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="Enter your password"
         value={password}
         onChange={e => onPasswordChange(e.target.value)}
-        className={styles.input}
         required
       />
       <input
         type="password"
-        placeholder="Confirm Password"
+        placeholder="Confirm your password"
         value={confirmPassword}
         onChange={e => onConfirmPasswordChange(e.target.value)}
-        className={styles.input}
         required
       />
-      <button type="submit" className={styles.button}>Sign Up</button>
+      <button type="submit">Create Account</button>
       {error && <div className={styles.error}>{error}</div>}
     </form>
-    <button className={styles.switchButton} onClick={onSwitchToLogin}>
-      Already have an account? <span>Login</span>
-    </button>
+    <p className={styles.switchText}>
+      Already have an account? <span onClick={onSwitchToLogin}>Sign in</span>
+    </p>
   </div>
 );
 

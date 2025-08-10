@@ -1,7 +1,53 @@
-.pageBackground {
+.pageWrapper {
+  display: flex;
   min-height: 100vh;
-  background: #fff;
+  flex-wrap: wrap;
+}
+
+.leftPanel {
+  flex: 1;
+  background-color: #0a57ff;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  min-width: 300px;
+}
+
+.leftPanel h1 {
+  margin-top: 1rem;
+}
+
+.leftPanel p {
+  margin: 1rem 0;
+}
+
+.leftPanel ul {
+  list-style: none;
+  padding: 0;
+}
+
+.leftPanel li {
+  margin-bottom: 0.8rem;
+}
+
+.rightPanel {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 300px;
+  background-color: #f7f8fa;
+}
+
+@media (max-width: 768px) {
+  .pageWrapper {
+    flex-direction: column;
+  }
+  .leftPanel, .rightPanel {
+    flex: unset;
+    width: 100%;
+    min-height: auto;
+  }
 }

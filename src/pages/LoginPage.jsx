@@ -54,32 +54,44 @@ const LoginPage = () => {
   };
 
   return (
-    <div className={styles.pageBackground}>
-      {isLoginMode ? (
-        <Login
-          email={email}
-          onEmailChange={setEmail}
-          password={password}
-          onPasswordChange={setPassword}
-          onSubmit={handleLogin}
-          error={error}
-          onSwitchToSignup={() => setIsLoginMode(false)}
-        />
-      ) : (
-        <SignUp
-          username={username}
-          onUsernameChange={setUsername}
-          email={email}
-          onEmailChange={setEmail}
-          password={password}
-          onPasswordChange={setPassword}
-          confirmPassword={confirmPassword}
-          onConfirmPasswordChange={setConfirmPassword}
-          onSubmit={handleSignup}
-          error={error}
-          onSwitchToLogin={() => setIsLoginMode(true)}
-        />
-      )}
+    <div className={styles.pageWrapper}>
+      <div className={styles.leftPanel}>
+        <div className={styles.icon}></div>
+        <h1>Temporary Chat & File Sharing</h1>
+        <p>Create secure, time-limited chat groups for temporary collaboration.</p>
+        <ul>
+          <li>⏱ Auto-expiring groups</li>
+          <li>👥 Invite team members</li>
+          <li>💬 Share files securely</li>
+        </ul>
+      </div>
+      <div className={styles.rightPanel}>
+        {isLoginMode ? (
+          <Login
+            email={email}
+            onEmailChange={setEmail}
+            password={password}
+            onPasswordChange={setPassword}
+            onSubmit={handleLogin}
+            error={error}
+            onSwitchToSignup={() => setIsLoginMode(false)}
+          />
+        ) : (
+          <SignUp
+            username={username}
+            onUsernameChange={setUsername}
+            email={email}
+            onEmailChange={setEmail}
+            password={password}
+            onPasswordChange={setPassword}
+            confirmPassword={confirmPassword}
+            onConfirmPasswordChange={setConfirmPassword}
+            onSubmit={handleSignup}
+            error={error}
+            onSwitchToLogin={() => setIsLoginMode(true)}
+          />
+        )}
+      </div>
     </div>
   );
 };

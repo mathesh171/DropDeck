@@ -10,31 +10,30 @@ const Login = ({
   error,
   onSwitchToSignup
 }) => (
-  <div className={styles.loginContainer}>
-    <h2 className={styles.title}>DropDeck Login</h2>
-    <form className={styles.form} onSubmit={e => { e.preventDefault(); onSubmit(); }}>
+  <div className={styles.formCard}>
+    <h2>Welcome back</h2>
+    <p>Sign in to access your temporary chat groups</p>
+    <form onSubmit={e => { e.preventDefault(); onSubmit(); }}>
       <input
         type="email"
-        placeholder="Email"
+        placeholder="Enter your email"
         value={email}
         onChange={e => onEmailChange(e.target.value)}
-        className={styles.input}
         required
       />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="Enter your password"
         value={password}
         onChange={e => onPasswordChange(e.target.value)}
-        className={styles.input}
         required
       />
-      <button type="submit" className={styles.button}>Login</button>
+      <button type="submit">Sign In</button>
       {error && <div className={styles.error}>{error}</div>}
     </form>
-    <button className={styles.switchButton} onClick={onSwitchToSignup}>
-      Don't have an account? <span>Sign Up</span>
-    </button>
+    <p className={styles.switchText}>
+      Don't have an account? <span onClick={onSwitchToSignup}>Sign up</span>
+    </p>
   </div>
 );
 
