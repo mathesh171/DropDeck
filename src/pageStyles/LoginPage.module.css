@@ -5,7 +5,7 @@
 }
 
 .leftPanel {
-  flex: 1;
+  flex: .9;
   background-color: #0a57ff;
   color: #fff;
   display: flex;
@@ -25,11 +25,12 @@
 
 .leftPanel ul {
   list-style: none;
-  padding: 0;
+  padding-left: 5rem;  
+  
 }
 
 .leftPanel li {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem; 
 }
 
 .rightPanel {

@@ -1,8 +1,9 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import './App.css';
 
-import Login from './pages/LoginPage'
-import Home from './pages/Home'
+import Login from './pages/LoginPage';
+import Home from './pages/Home';
 
 const isAuthenticated = () =>{
   return localStorage.getItem("isLoggedIn") === "true";

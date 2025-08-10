@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast, Bounce } from 'react-toastify';
+import ToastContainerComponent from '../components/Tostify/Tostify';
 import Login from '../components/Login/Login';
 import SignUp from '../components/SignUp/SignUp';
 import styles from '../pageStyles/LoginPage.module.css'; 
@@ -12,7 +14,43 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const [signupSuccess, setSignupSuccess] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      setError('');
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (signupSuccess) {
+      toast.success('Signup successful! Please check your Gmail for verification.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      setSignupSuccess(false);
+      setIsLoginMode(true);
+    }
+  }, [signupSuccess]);
 
   const handleLogin = async () => {
     try {
@@ -43,8 +81,7 @@ const LoginPage = () => {
       });
       const data = response.data;
       if (data.success) {
-        alert('Signup successful! Please check your Gmail for verification.');
-        setIsLoginMode(true);
+        setSignupSuccess(true);
       } else {
         setError(data.message || 'Signup failed');
       }
@@ -92,6 +129,7 @@ const LoginPage = () => {
           />
         )}
       </div>
+      <ToastContainerComponent />
     </div>
   );
 };
